@@ -30,7 +30,7 @@ Required:
 - [AWS CLI](#aws-cli)
 - [Zoom](#zoom)
 - [Slack](#slack)
-- [OpenSSL](#Openssl)
+- [OpenSSL](#OpenSSL)
 - [Terraform](#terraform)
 
 
@@ -397,14 +397,48 @@ $ brew cleanup
 ```
 ## Java
 
-To install Java, run:
+### jEnv
+Java (by default) expects to only have one version installed on a system. This is less true for developer machines where testing is needed across JRE versions. Jenv helps user to switch between java versions.
+
+To install jEnv, run:
+```
+$ brew update
+$ brew install jenv
+$ echo 'export PATH="$HOME/.jenv/bin:$PATH"' >> ~/.bash_profile
+$ echo 'eval "$(jenv init -)"' >> ~/.bash_profile
+# Close and open terminal or use the following line to reload the current shell's config
+$ source ~/.bash_profile
+```
+
+### Java JDKs
+To install Java, find the JDK version you want to install from https://github.com/AdoptOpenJDK/homebrew-openjdk:
 
 ```
 $ brew update
-$ brew cask install java
+$ brew cask install adoptopenjdk/openjdk/<version> 
 $ brew cleanup 
 ```
+**Example install for jdk8:** 
+```
+brew cask install adoptopenjdk/openjdk/adoptopenjdk8
+```
+
 The terminal will ask to type a password in to continue installation, and the password is your computer's password. 
+
+### jEnv configuration
+#### Adding JREs to jEnv
+Now that the JDKs have been installed, jEnv will need to be configured for them.
+
+Example adding JDK/JRE 8 to jEnv: 
+```
+jenv add /Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home/jre/
+```
+#### Configuring jEnv for command line utilities
+In order for applications to use the jEnv selected JRE, we need to configure jEnv.
+```
+$ jenv enable-plugin export
+$ jenv enable-plugin maven
+```
 
 ## Maven
 
@@ -423,7 +457,7 @@ To check if Maven was successfully installed, run:
 ```
 $ mvn -v
 ```
-and the output should be:
+and the output should be (it may be slightly different if you are using jEnv to use non-system JRE):
 
 ```
 Apache Maven 3.6.1 (d66c9c0b3152b2e69ee9bac180bb8fcc8e6af555; 2019-04-04T12:00:29-07:00)
