@@ -11,9 +11,7 @@ The document assumes you are new to Mac, but can also be useful if you are reins
 - [Security](#security)
 
 Required:
-- [iTerm2](#iterm2)
 - [Homebrew](#homebrew)
-- [Bash-Completion](#bash-completion)
 - [Git](#git)
 - [Docker](#docker)
 - [Docker-Compose](#docker-compose)
@@ -21,31 +19,24 @@ Required:
 - [Postman](#postman)
 - [Java](#java)
 - [Maven](#maven)
-- [Groovy](#groovy)
-- [Gradle](#gradle)
 - [Go](#go)
 - [Python3](#python3)
 - [Pip3](#pip3)
 - [Google Cloud SDK](#google-cloud-sdk)
 - [AWS CLI](#aws-cli)
-- [Zoom](#zoom)
 - [Slack](#slack)
-- [OpenSSL](#OpenSSL)
 - [Terraform](#terraform)
 
-
-
-
 Optional: 
+- [iTerm2](#iterm2)
+- [Bash-Completion](#bash-completion)
 - [Citrix Workspace and Citrix Netscaler Gateway](#citrix-workspace-and-citrix-netscaler-gateway)
+- [Groovy](#groovy)
+- [Gradle](#gradle)
+- [OpenSSL](#OpenSSL)
 - [Visual Studio Code](#visual-studio-code)
 - [Vim](#vim)
 - [Node.js](#nodejs)
-- [Ruby](#ruby)
-- [Heroku](#heroku)
-- [PostgreSQL](#postgresql)
-- [Redis](#redis)
-- [Elasticsearch](#elasticsearch)
 - [Projects folder](#projects-folder)
 - [Apps](#apps)
 
@@ -77,53 +68,6 @@ In **Apple Icon > System Preferences**:
 - iCloud: If you haven't already done so during set up, enable Find My Mac
 
 # The following are required:
-## iTerm2
-
-### Install
-
-Since we're going to be spending a lot of time in the command-line, let's install a better terminal than the default one. Download and install [iTerm2](http://www.iterm2.com/).
-
-In **Finder**, drag and drop the **iTerm** Application file into the **Applications** folder.
-
-You can now launch iTerm, through the **Launchpad** for instance.
-
-Let's just quickly change some preferences. In **iTerm2 > Preferences...**, under the tab **General**, uncheck **Confirm closing multiple sessions** and **Confirm "Quit iTerm2 (Cmd+Q)" command** under the section **Closing**.
-
-In the tab **Profiles**, create a new one with the "+" icon, and rename it to your first name for example. Then, select **Other Actions... > Set as Default**. Under the section **General** set **Working Directory** to be **Reuse previous session's directory**. Finally, under the section **Window**, change the size to something better, like **Columns: 125** and **Rows: 35**.
-
-When done, hit the red "X" in the upper left (saving is automatic in macOS preference panes). Close the window and open a new one to see the size change.
-
-### Beautiful terminal
-
-Since we spend so much time in the terminal, we should try to make it a more pleasant and colorful place. What follows might seem like a lot of work, but trust me, it'll make the development experience so much better.
-
-First let's add some color. There are many great color schemes out there, but if you don't know where to start you can try [Atom One Dark](https://github.com/nathanbuchar/atom-one-dark-terminal). Download the iTerm presets for the theme by running:
-
-```
-cd ~/Downloads
-curl -o "Atom One Dark.itermcolors" https://raw.githubusercontent.com/nathanbuchar/atom-one-dark-terminal/master/scheme/iterm/One%20Dark.itermcolors
-curl -o "Atom One Light.itermcolors" https://raw.githubusercontent.com/nathanbuchar/atom-one-dark-terminal/master/scheme/iterm/One%20Light.itermcolors
-```
-
-Then, in **iTerm2 Preferences**, under **Profiles** and **Colors**, go to **Color Presets... > Import...**, find and open the **Atom One Dark.itermcolors** file we just downloaded. Repeat these steps for **Atom One Light.itermcolors**.  Now open **Color Presets...** again and select **Atom One Dark** to activate the dark theme (or choose the light them if that's your preference).
-
-Not a lot of colors yet. We need to tweak a little bit our Unix user's profile for that. This is done (on macOS and Linux), in the `~/.bash_profile` text file (`~` stands for the user's home directory).
-
-We'll come back to the details of that later, but for now, just download the files [.bash_profile](https://raw.githubusercontent.com/nicolashery/mac-dev-setup/master/.bash_profile), [.bash_prompt](https://raw.githubusercontent.com/nicolashery/mac-dev-setup/master/.bash_prompt), [.aliases](https://raw.githubusercontent.com/nicolashery/mac-dev-setup/master/.aliases) attached to this document into your home directory (`.bash_profile` is the one that gets loaded, I've set it up to call the others):
-
-```
-cd ~
-curl -O https://raw.githubusercontent.com/nicolashery/mac-dev-setup/master/.bash_profile
-curl -O https://raw.githubusercontent.com/nicolashery/mac-dev-setup/master/.bash_prompt
-curl -O https://raw.githubusercontent.com/nicolashery/mac-dev-setup/master/.aliases
-```
-
-With that, open a new terminal tab (**Cmd+T**) and see the change! Try the list commands: `ls`, `ls -lh` (aliased to `ll`), `ls -lha` (aliased to `la`).
-
-Now we have a terminal we can work with!
-
-(Thanks to Mathias Bynens for his awesome [dotfiles](https://github.com/mathiasbynens/dotfiles).)
-
 ## Homebrew
 
 Package managers make it so much easier to install and update applications (for Operating Systems) or libraries (for programming languages). The most popular one for macOS is [Homebrew](http://brew.sh/).
@@ -205,26 +149,6 @@ At anytime you can view which services are running with:
 ```
 brew services list
 ```
-
-## Bash-Completion
-
-Bash-completion helps you type commands faster. Type "git" into your terminal followed by pressing tab twice to see a list of commands.
-
-To install bash-completion, run:
-
-```
-$ brew install bash-completion
-$ brew tap homebrew/completions
-```
-Go to your root directory, open up the .bash_profile file, and add 
-
-```
-if [ -f $(brew --prefix)/etc/bash_completion ]; then
-  . $(brew --prefix)/etc/bash_completion
-fi
-```
-
-Save and exit out of the .bash_profile file. 
 
 ## Git
 
@@ -466,27 +390,6 @@ Java version: 12.0.1, vendor: Oracle Corporation, runtime: /Library/Java/JavaVir
 Default locale: en_US, platform encoding: UTF-8
 OS name: "mac os x", version: "10.14.5", arch: "x86_64", family: "mac"
 ```
-## Groovy
-
-Groovy is an object-oriented language that integrates with Java. To install it, run:
-
-```
-$ brew update
-$ brew install groovy
-$ brew cleanup
-```
-
-## Gradle
-
-Gradle is a tool for automating builds that runs on JVM and requires a Java Development Kit. 
-
-To install, run:
-
-```
-$ brew update
-$ brew install gradle
-$ brew cleanup
-```
 
 ## Go
 
@@ -531,6 +434,7 @@ and it should show:
 ```
 python 3.7.0
 ```
+
 ## Pip3
 
 Pip is a package-management system used for packages written in Python.
@@ -566,19 +470,6 @@ $ brew install awscli
 $ brew cleanup
 ```
 
-## Zoom
-
-Zoom is a software that allows video conferencing, online meetings, chat, and mobile collaboration. 
-
-To install, run:
-
-```
-$ brew update
-$ brew cask install zoomus
-$ brew cleanup
-```
-When asked for a password, enter your computer's password. 
-
 ## Slack
 
 Slack is a cloud based messaging software used for team collaborations. 
@@ -588,18 +479,6 @@ To install, run:
 ```
 $ brew update
 $ brew cask install slack
-$ brew cleanup
-```
-
-## OpenSSL
-
-OpenSSL is a library to ensure secure communications across computer networks.
-
-To install, run:
-
-```
-$ brew update
-$ brew install openssl
 $ brew cleanup
 ```
 
@@ -614,7 +493,75 @@ $ brew update
 $ brew install terraform
 $ brew cleanup
 ```
+
 # The following are optional:
+
+## iTerm2
+
+### Install
+
+Since we're going to be spending a lot of time in the command-line, let's install a better terminal than the default one. Download and install [iTerm2](http://www.iterm2.com/).
+
+In **Finder**, drag and drop the **iTerm** Application file into the **Applications** folder.
+
+You can now launch iTerm, through the **Launchpad** for instance.
+
+Let's just quickly change some preferences. In **iTerm2 > Preferences...**, under the tab **General**, uncheck **Confirm closing multiple sessions** and **Confirm "Quit iTerm2 (Cmd+Q)" command** under the section **Closing**.
+
+In the tab **Profiles**, create a new one with the "+" icon, and rename it to your first name for example. Then, select **Other Actions... > Set as Default**. Under the section **General** set **Working Directory** to be **Reuse previous session's directory**. Finally, under the section **Window**, change the size to something better, like **Columns: 125** and **Rows: 35**.
+
+When done, hit the red "X" in the upper left (saving is automatic in macOS preference panes). Close the window and open a new one to see the size change.
+
+### Beautiful terminal
+
+Since we spend so much time in the terminal, we should try to make it a more pleasant and colorful place. What follows might seem like a lot of work, but trust me, it'll make the development experience so much better.
+
+First let's add some color. There are many great color schemes out there, but if you don't know where to start you can try [Atom One Dark](https://github.com/nathanbuchar/atom-one-dark-terminal). Download the iTerm presets for the theme by running:
+
+```
+cd ~/Downloads
+curl -o "Atom One Dark.itermcolors" https://raw.githubusercontent.com/nathanbuchar/atom-one-dark-terminal/master/scheme/iterm/One%20Dark.itermcolors
+curl -o "Atom One Light.itermcolors" https://raw.githubusercontent.com/nathanbuchar/atom-one-dark-terminal/master/scheme/iterm/One%20Light.itermcolors
+```
+
+Then, in **iTerm2 Preferences**, under **Profiles** and **Colors**, go to **Color Presets... > Import...**, find and open the **Atom One Dark.itermcolors** file we just downloaded. Repeat these steps for **Atom One Light.itermcolors**.  Now open **Color Presets...** again and select **Atom One Dark** to activate the dark theme (or choose the light them if that's your preference).
+
+Not a lot of colors yet. We need to tweak a little bit our Unix user's profile for that. This is done (on macOS and Linux), in the `~/.bash_profile` text file (`~` stands for the user's home directory).
+
+We'll come back to the details of that later, but for now, just download the files [.bash_profile](https://raw.githubusercontent.com/nicolashery/mac-dev-setup/master/.bash_profile), [.bash_prompt](https://raw.githubusercontent.com/nicolashery/mac-dev-setup/master/.bash_prompt), [.aliases](https://raw.githubusercontent.com/nicolashery/mac-dev-setup/master/.aliases) attached to this document into your home directory (`.bash_profile` is the one that gets loaded, I've set it up to call the others):
+
+```
+cd ~
+curl -O https://raw.githubusercontent.com/nicolashery/mac-dev-setup/master/.bash_profile
+curl -O https://raw.githubusercontent.com/nicolashery/mac-dev-setup/master/.bash_prompt
+curl -O https://raw.githubusercontent.com/nicolashery/mac-dev-setup/master/.aliases
+```
+
+With that, open a new terminal tab (**Cmd+T**) and see the change! Try the list commands: `ls`, `ls -lh` (aliased to `ll`), `ls -lha` (aliased to `la`).
+
+Now we have a terminal we can work with!
+
+(Thanks to Mathias Bynens for his awesome [dotfiles](https://github.com/mathiasbynens/dotfiles).)
+
+## Bash-Completion
+
+Bash-completion helps you type commands faster. Type "git" into your terminal followed by pressing tab twice to see a list of commands.
+
+To install bash-completion, run:
+
+```
+$ brew install bash-completion
+$ brew tap homebrew/completions
+```
+Go to your root directory, open up the .bash_profile file, and add 
+
+```
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+  . $(brew --prefix)/etc/bash_completion
+fi
+```
+
+Save and exit out of the .bash_profile file. 
 
 ## Citrix Workspace and Citrix Netscaler Gateway
 
@@ -659,11 +606,41 @@ Let's do that now to customize the color of our editor. Search for the [Atom One
 
 Finally, activate the theme by going to **Code > Preferences > Color Theme** and selecting **Atom One Dark** (or **Atom One Light** if that is your preference).
 
+## Groovy
+
+Groovy is an object-oriented language that integrates with Java. To install it, run:
+
+```
+$ brew update
+$ brew install groovy
+$ brew cleanup
+```
+
+## Gradle
+
+Gradle is a tool for automating builds that runs on JVM and requires a Java Development Kit. 
+
+To install, run:
+
+```
+$ brew update
+$ brew install gradle
+$ brew cleanup
+```
+
+## OpenSSL
+
+OpenSSL is a library to ensure secure communications across computer networks.
+
+To install, run:
+
+```
+$ brew update
+$ brew install openssl
+$ brew cleanup
+```
+
 ## Vim
-
-Although Sublime Text will be our main editor, it is a good idea to learn some very basic usage of [Vim](http://www.vim.org/). It is a very popular text editor inside the terminal, and is usually pre-installed on any Unix system.
-
-For example, when you run a Git commit, it will open Vim to allow you to type the commit message.
 
 I suggest you read a tutorial on Vim. Grasping the concept of the two "modes" of the editor, **Insert** (by pressing `i`) and **Normal** (by pressing `Esc` to exit Insert mode), will be the part that feels most unnatural. Also, it is good to know that typing `:x` when in Normal mode will save and exit. After that, it's just remembering a few important keys.
 
@@ -739,67 +716,6 @@ pyenv local myproject
 ```
 
 Next time you enter that project's directory, `pyenv` will automatically load the virtualenv for you.
-
-### Anaconda and Miniconda
-
-The Anaconda/Miniconda distributions of Python come with many useful tools for scientific computing.
-
-You can install them using `pyenv`, for example (replace `x.x.x` with an actual version number):
-
-```
-pyenv install miniconda3-x.x.x
-```
-
-After loading an Anaconda or Miniconda Python distribution into your shell, you can create [conda](https://docs.conda.io/) environments (which are similar to virtualenvs):
-
-```
-pyenv shell miniconda3-x.x.x
-conda create --name  mycondaproject
-conda activate mycondaproject
-```
-
-Install packages, for example the [Jupyter Notebook](https://jupyter.org/), using:
-
-```
-conda install jupyter
-```
-
-You should now be able to run the notebook:
-
-```
-jupyter notebook
-```
-
-Deactivate the environment, and return to the default Python version with:
-
-```
-conda deactivate
-pyenv shell --unset
-```
-
-### Known issue: `gettext` not found by `git` after installing Anaconda/Miniconda
-
-If you installed an Anaconda/Miniconda distribution, you may start seeing an error message when using certain `git` commands, similar to this one:
-
-```
-pyenv: gettext.sh: command not found
-
-The `gettext.sh' command exists in these Python versions:
-  miniconda3-latest
-```
-
-If that is the case, you can use the following [workaround](https://github.com/pyenv/pyenv/issues/688#issuecomment-428675578):
-
-```
-brew install gettext
-```
-
-Then add this line to your `.bash_profile`:
-
-```bash
-# Workaround for: https://github.com/pyenv/pyenv/issues/688#issuecomment-428675578
-export PATH="/usr/local/opt/gettext/bin:$PATH"
-```
 
 ## Node.js
 
@@ -903,243 +819,6 @@ To uninstall a package:
 ```
 npm uninstall --save <package>
 ```
-
-## Ruby
-
-Like Python, [Ruby](http://www.ruby-lang.org/) is already installed on Unix systems. But we don't want to mess around with that installation. More importantly, we want to be able to use the latest version of Ruby.
-
-### Install
-
-The recommended way to install Ruby is to use [rbenv](https://github.com/rbenv/rbenv), which allows you to manage multiple versions of Ruby on the same machine. You can install `rbenv` with Homebrew:
-
-```
-brew install rbenv
-```
-
-After installation, add the following line to your `.bash_profile`:
-
-```bash
-eval "$(rbenv init -)"
-```
-
-And reload it with:
-
-```
-source ~/.bash_profile
-```
-
-### Usage
-
-The following command will show you which versions of Ruby are available to install:
-
-```
-rbenv install --list
-```
-
-You can find the latest version in that list and install it with (replace `.x.x` with actual version numbers):
-
-```
-rbenv install 2.x.x
-```
-
-Run the following to see which versions you have installed:
-
-```
-rbenv versions
-```
-
-The start (`*`) will show you that we are currently using the default `system` version. You can switch your terminal to use the one you just installed:
-
-```
-rbenv shell 2.x.x
-```
-
-You can also set it as the default version if you want:
-
-```
-rbenv global 2.x.x
-```
-
-In a specific project's directory, you can ask `rbenv` to create a `.ruby-version` file. Next time you enter that project's directory from the terminal, it will automatically load the correct Ruby version:
-
-```
-rbenv local 2.x.x
-```
-
-Check anytime which version you are using with:
-
-```
-rbenv version
-```
-
-See [rbenv's command reference](https://github.com/rbenv/rbenv#command-reference) for more information.
-
-### RubyGems & Bundler
-
-[RubyGems](http://rubygems.org/), the Ruby package manager, was also installed:
-
-```
-which gem
-```
-
-The first thing you want to do after installing a new Ruby version is to install [Bundler](https://bundler.io/). This tool will allow you to set up separate environments for your different Ruby projects, so their required gem versions won't conflict with each other. Install Bundler with:
-
-```
-gem install bundler
-```
-
-In a new Ruby project directory, create a new `Gemfile` with:
-
-```
-bundle init
-```
-
-Add a dependency to the `Gemfile`, for example the [Jekyll]() static site generator:
-
-```ruby
-source "https://rubygems.org"
-
-gem "jekyll"
-```
-
-Then install the project's dependencies with:
-
-```
-bundle install
-```
-
-Make sure you check in both the `Gemfile` and `Gemfile.lock` into your Git repository.
-
-Update a specific dependency with:
-
-```
-bundle update <gem>
-```
-
-For more information, see the [Bundler documentation](https://bundler.io/docs.html).
-
-## Heroku
-
-[Heroku](http://www.heroku.com/) is a [Platform-as-a-Service](http://en.wikipedia.org/wiki/Platform_as_a_service) (PaaS) that makes it really easy to deploy your apps. There are other similar solutions out there, but Heroku is among the most popular. Not only does it make a developer's life easier, but I find that having Heroku deployment in mind when building an app forces you to follow modern app development [best practices](http://www.12factor.net/).
-
-Assuming that you have an account (sign up if you don't), let's install the [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli):
-
-```
-brew tap heroku/brew
-brew install heroku
-```
-
-Login to your Heroku account using:
-
-```
-heroku login
-```
-
-(This will prompt you to open a page in your web browser and log in to your Heroku account.)
-
-Once logged-in, you're ready to deploy apps! Heroku has great [Getting Started](https://devcenter.heroku.com/start) guides for different languages, so I'll let you refer to that. Heroku uses Git to push code for deployment, so make sure your app is under Git version control. A quick cheat sheet (if you've used Heroku before):
-
-```
-cd myapp/
-heroku create myapp
-git push heroku master
-heroku ps
-heroku logs -t
-```
-
-The [Heroku Dev Center](https://devcenter.heroku.com/) is full of great resources, so be sure to check it out!
-
-## PostgreSQL
-
-[PostgreSQL](https://www.postgresql.org/) is a popular relational database, and Heroku has first-class support for it.
-
-Install PostgreSQL using Homebrew:
-
-```
-brew install postgresql
-```
-
-It will automatically add itself to Homebrew Services. Start it with:
-
-```
-brew services start postgresql
-```
-
-If you reboot your machine, PostgreSQL will be restarted at login.
-
-### GUI
-
-You can interact with your SQL database by running `psql` in the terminal.
-
-If you prefer a GUI (Graphical User Interface), [Postico](https://eggerapps.at/postico/) has a simple free version that let's you explore tables and run SQL queries.
-
-## Redis
-
-[Redis](http://redis.io/) is a fast, in-memory, key-value store, that uses the disk for persistence. It complements nicely a database such as PostgreSQL. There are a lot of [interesting things](http://oldblog.antirez.com/post/take-advantage-of-redis-adding-it-to-your-stack.html) that you can do with it. For example, it's often used for session management or caching by web apps, but it has many other uses.
-
-To install Redis, use Homebrew:
-
-```
-brew install redis
-```
-
-Start it through Homebrew Services with:
-
-```
-brew services start redis
-```
-
-I'll let you refer to Redis' [documentation](http://redis.io/documentation) or other tutorials for more information.
-
-## Elasticsearch
-
-[Elasticsearch](https://www.elastic.co/products/elasticsearch) is a distributed search and analytics engine. It uses an HTTP REST API, making it easy to work with from any programming language.
-
-You can use elasticsearch for things such as real-time search results, autocomplete, recommendations, machine learning, and more.
-
-### Install
-
-Elasticsearch runs on Java, so check if you have it installed by running:
-
-```bash
-java -version
-```
-
-If Java isn't installed yet, dismiss the window that just appeared by clicking "Ok", and install Java via Homebrew:
-
-```
-brew cask install homebrew/cask-versions/java8
-```
-
-Next, install Elasticsearch with:
-
-```bash
-brew install elasticsearch
-```
-
-### Usage
-
-Start the Elasticsearch server with:
-
-```bash
-brew services start elasticsearch
-```
-
-Test that the server is working correctly by running:
-
-```bash
-curl -XGET 'http://localhost:9200/'
-```
-
-(You may need to wait a little bit for it to boot up if you just started the service.)
-
-Elasticsearch's [documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/index.html) is more of a reference. To get started, you can also take a look at [Elasticsearch: The Definitive Guide](https://www.elastic.co/guide/en/elasticsearch/guide/master/index.html).
-
-### GUI
-
-You can interact with the Elasticsearch server using `curl`, or anything that can send an HTTP request.
-
-However, if you prefer a graphical interface, you can take a look at [Dejavu](https://opensource.appbase.io/dejavu/). You can easily install it via the [Dejavu Chrome Extension](https://chrome.google.com/webstore/detail/dejavu-elasticsearch-web/jopjeaiilkcibeohjdmejhoifenbnmlh).
 
 ## Projects folder
 
