@@ -1,0 +1,8 @@
+adoptopenjdk
+adoptopenjdk11
+adoptopenjdk14
+docker
+google-cloud-sdk
+jd-gui
+postman
+rectangle
